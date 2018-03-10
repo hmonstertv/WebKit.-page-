@@ -1,0 +1,53 @@
+$circle-num: 3;
+body {
+  background: blueviolet;
+}
+.container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  .circle {
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    position: absolute;
+    border-radius: 50%;
+    animation-timing-function: linear;
+    animation: anim-04 2s linear infinite;
+    transform-origin: 50% 50%;
+    @for $i from 2 through $circle-num {
+      &:nth-child(#{$i}) {
+        animation-delay: (2/3) * (4s - $i);      
+      }
+    }
+  }
+}
+@keyframes anim-04 {
+  0% {
+    transform-origin: 100% -100%;
+    transform: rotate(0) translate(0);
+  }
+  16.66666% {
+    transform-origin: 100% -100%;
+    transform: rotate(360deg) translate(20px);
+  }
+  33.333333% {
+    transform-origin: 100% -100%;
+    transform: rotate(360deg) translate(20px);
+  }
+  50.000001% {
+    transform-origin: 50% 0%;
+    transform: rotate(360deg) translateX(10px);
+  }
+  66.666666% {
+    transform-origin: 50% 0%;
+    transform: rotate(360deg) translateX(10px); 
+  }
+  83.33333% {
+    transform: rotate(360deg) translateX(0);
+  }
+  100% {
+    transform: rotate(360deg) translateX(0);
+  }
+}
